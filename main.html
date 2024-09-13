@@ -9,23 +9,28 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			let n = arr.length;
-			if(n<2) return -Infinity;
-			let maxm=arr[0];
+			// Handle cases with less than two elements
+			if (arr.length < 2) return -Infinity;
+			
+			// Convert all array elements to numbers
+			arr = arr.map(Number);
+			
+			// Initialize the maximum and second maximum values
+			let maxm = -Infinity;
 			let secMaxm = -Infinity;
-			for(let i=1;i<n;i++){
-				if(arr[i]>maxm){
-					secMaxm=maxm;
+			
+			// Iterate through the array to find the second highest element
+			for (let i = 0; i < arr.length; i++) {
+				if (arr[i] > maxm) {
+					secMaxm = maxm;
 					maxm = arr[i];
-				}
-				else if(arr[i]<maxm && arr[i]>secMaxm){
-					secMaxm=arr[i];
+				} else if (arr[i] < maxm && arr[i] > secMaxm) {
+					secMaxm = arr[i];
 				}
 			}
+			
+			// Return the second highest value or -Infinity if not found
 			return secMaxm;
-			
-			
 		}
 
 		function Main() {
